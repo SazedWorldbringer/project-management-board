@@ -13,6 +13,10 @@ function onDragStart(e, id) {
 	e.dataTransfer.setData("id", id);
 }
 
+function onDragOver(e) {
+	e.preventDefault();
+}
+
 function Board() {
 	const [loading, error, tasks] = useDataFetching(
 		`https://my-json-server.typicode.com/PacktPublishing/React-Projects-Second-Edition/tasks`
@@ -28,6 +32,7 @@ function Board() {
 					error={error}
 					tasks={tasks.filter((task) => task.lane === lane.id)}
 					onDragStart={onDragStart}
+					onDragOver={onDragOver}
 				/>
 			))}
 		</div>
