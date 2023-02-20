@@ -24,7 +24,6 @@ const Title = styled.h2`
 function Lane({ laneId, title, loading, error, tasks, onDragStart, onDragOver, onDrop }) {
 	return (
 		<LaneWrapper
-			className="Lane-wrapper"
 			onDragOver={onDragOver}
 			onDrop={(e) => onDrop(e, laneId)}
 		>
