@@ -1,6 +1,27 @@
+import styled from "styled-components";
 import Task from "../../components/Task/Task";
 import useDataFetching from "../../hooks/useDataFetching"
-import "./Backlog.css"
+
+const BacklogWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin: 5%;
+`;
+
+const Title = styled.h2`
+	width: 100%;
+	padding-bottom: 10px;
+	text-align: left;
+	border-bottom: 1px solid darkgray;
+`;
+
+const TasksWrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 5%;
+`;
 
 function Backlog() {
 	const [loading, error, tasks] = useDataFetching(
@@ -8,9 +29,9 @@ function Backlog() {
 	);
 
 	return (
-		<div className="Backlog-wrapper">
-			<h2>Backlog</h2>
-			<div className="Tasks-wrapper">
+		<BacklogWrapper>
+			<Title>Backlog</Title>
+			<TasksWrapper>
 				{loading || error ? (
 					<span>{error || "Loading..."}</span>
 				) : (
@@ -22,8 +43,8 @@ function Backlog() {
 						/>
 					))
 				)}
-			</div>
-		</div>
+			</TasksWrapper>
+		</BacklogWrapper>
 	)
 }
 
