@@ -20,7 +20,7 @@ function Task({ id, title, body, onDragStart }) {
 	return (
 		<TaskWrapper
 			draggable
-			onDragStart={onDragStart}
+			onDragStart={(e) => onDragStart(e, id)}
 		>
 			<Title>{title}</Title>
 			<p>{body}</p>
