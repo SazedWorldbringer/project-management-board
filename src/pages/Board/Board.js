@@ -1,7 +1,18 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import Lane from "../../components/Lane/Lane";
 import useDataFetching from "../../hooks/useDataFetching";
-import "./Board.css";
+
+const BoardWrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	margin: 5%;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+	}
+`;
 
 const lanes = [
 	{ id: 1, title: "To do" },
@@ -43,7 +54,7 @@ function Board() {
 	}
 
 	return (
-		<div className="Board-wrapper">
+		<BoardWrapper>
 			{lanes.map((lane) => (
 				<Lane
 					key={lane.id}
@@ -57,7 +68,7 @@ function Board() {
 					onDrop={onDrop}
 				/>
 			))}
-		</div>
+		</BoardWrapper>
 	)
 }
 
