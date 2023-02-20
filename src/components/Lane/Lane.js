@@ -1,11 +1,12 @@
 import Task from '../Task/Task';
 import './Lane.css'
 
-function Lane({ title, loading, error, tasks, onDragStart, onDragOver }) {
+function Lane({ laneId, title, loading, error, tasks, onDragStart, onDragOver, onDrop }) {
 	return (
 		<div
 			className="Lane-wrapper"
 			onDragOver={onDragOver}
+			onDrop={(e) => onDrop(e, laneId)}
 		>
 			<h2>{title}</h2>
 			{loading || error ? (
